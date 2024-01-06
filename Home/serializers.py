@@ -1,19 +1,27 @@
 from rest_framework import serializers
 from .models import Club, Candidate
-from django.contrib.auth.models import User
+
+# from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['id', 'username', 'email', 'first_name', 'last_name']
 
 class ClubSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    # user = UserSerializer()
 
     class Meta:
         model = Club
-        fields = ['id', 'fees', 'user']
+        fields = ['email', 'name', 'phone', 'fees']
+        extra_kwargs = {'password': {'write_only': True}}
+    def create(self,validated_data):
+        password = validated_data.pop('password')
+        club = Club(**validated_data) 
+        club.set_password(password)
+        club.save()
+        return club
 
 class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
