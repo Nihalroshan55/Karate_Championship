@@ -13,20 +13,8 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import CreateAPIView 
 
-# class UserViewSet(viewsets.ModelViewSet):
-#     queryset = Club.objects.all()
-#     serializer_class = UserSerializer
-#     permission_classes = [AllowAny]
-
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         user = serializer.save()
-
-#         return Response(self.get_serializer(user).data, status=status.HTTP_201_CREATED)
 
 
-    
 class ClubViewSet(viewsets.ModelViewSet):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
@@ -63,6 +51,39 @@ class ClubViewSet(viewsets.ModelViewSet):
                     return Response({"message":"Invalid Credentials"},status=status.HTTP_401_UNAUTHORIZED)
 
 
+
+class CandidateViewSet(viewsets.ModelViewSet):
+    queryset = Candidate.objects.all()
+    serializer_class = CandidateSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = Club.objects.all()
+#     serializer_class = UserSerializer
+#     permission_classes = [AllowAny]
+
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         user = serializer.save()
+
+#         return Response(self.get_serializer(user).data, status=status.HTTP_201_CREATED)
         # if request.user._is_superuser:
             # queryset=Order.objects.filter(status='pending')
         # else:
@@ -71,11 +92,6 @@ class ClubViewSet(viewsets.ModelViewSet):
         # order.save() 
         # # queryset=Order.objects.filter(booking__from_hub=request.user.staff.hub,status='pending')
         # return OrderSerializer(order).data
-
-class CandidateViewSet(viewsets.ModelViewSet):
-    queryset = Candidate.objects.all()
-    serializer_class = CandidateSerializer
-
 # class CandidateViewSet(viewsets.ModelViewSet):
 #     queryset = Candidate.objects.all()
 #     serializer_class = CandidateSerializer

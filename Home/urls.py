@@ -10,5 +10,4 @@ router.register(r'candidates', CandidateViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # Your other urlpatterns go here
 ]

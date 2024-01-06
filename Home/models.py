@@ -39,11 +39,6 @@ class Club(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-# class Club(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     fees = models.IntegerField(default=0)
-#     def __str__(self):
-#         return self.user.username
 
 
         
@@ -79,3 +74,9 @@ class Candidate(models.Model):
     
     def __str__(self):
         return self.name
+
+# class Club(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     fees = models.IntegerField(default=0)
+#     def __str__(self):
+#         return self.user.username
